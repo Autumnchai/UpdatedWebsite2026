@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electrical Box | Autumn Thelen</title>
+    <title>Design Connects | Autumn Thelen</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body id="top">
@@ -18,33 +18,26 @@
         </nav>
     </header>
 
-    <main class="eb-main">
-        <h1 class="page-title eb-title">ELECTRICAL BOX</h1>
+    <main class="dc-main">
+        <h1 class="page-title dc-title">DESIGN CONNECTS</h1>
 
-        <div class="eb-top">
-            <div class="eb-left">
-                <img src="img/electricalbox/electricalboxfront.jpg" alt="Electrical box front view">
-                <div class="eb-description">
-                    <p><strong>Task:</strong> Redesign an electrical box to be representative of its surroundings. Turn it into an experience.</p>
-                    <p>I chose an electrical box near Newtonville. It is placed next to an intersection that people often stop to wait for. I wanted to create a typographic design with some panels easy to read from a distance or if passing quickly. Some take more time to explore.</p>
-                    <p>I wanted something that stood out rather than blending in (as current conditions do).</p>
-                    <p><strong>Tools:</strong> Adobe Illustrator, Adobe Photoshop</p>
-                </div>
-            </div>
-            <div class="eb-right">
-                <img src="img/electricalbox/electricalboxside.jpg" alt="Electrical box side view">
-            </div>
+        <div class="dc-images">
+            <img src="img/designconnects/designconnects-60.jpg" alt="Design Connects poster">
+            <img src="img/designconnects/designconnects-61.jpg" alt="Design Connects detail" class="dc-outlined">
         </div>
 
-        <div class="eb-bottom">
-            <img src="img/electricalbox/electricalboxacrossthest.jpg" alt="Electrical box from across the street">
+        <div class="dc-description">
+            <p><strong>Task:</strong> Create an entry for the 7th Emirates International Poster Festival 2025 with the theme Bridging Cultures, Building Communities. My piece Interlaced was selected for the show.</p>
+            <p><strong>Concept:</strong> I wanted to show how cultures of the world are unique and united through design. I considered how we use design to share messages, histories, and aesthetics. Different textures, patterns, and colors are used in different places, but we all belong to the same patchwork.</p>
+            <p><strong>Tools:</strong> Adobe Photoshop, Adobe Indesign<br>
+            <strong>Materials:</strong> scanner, string &amp; fabric</p>
         </div>
     </main>
 
     <nav class="project-nav">
-        <a href="wegmanspackaging.html" class="project-nav-link">← Grocery Packaging</a>
+        <a href="electricalbox.html" class="project-nav-link">← Electrical Box</a>
         <a href="#top" class="project-nav-link project-nav-top">Back to Top</a>
-        <a href="designconnects.html" class="project-nav-link">Design Connects →</a>
+        <a href="corpsebloom.html" class="project-nav-link">Corpse Bloom →</a>
     </nav>
 
     <footer class="site-footer">
@@ -68,7 +61,7 @@
         const prevBtn = document.getElementById('lightbox-prev');
         const nextBtn = document.getElementById('lightbox-next');
 
-        const imgs = Array.from(document.querySelectorAll('.eb-main img'));
+        const imgs = Array.from(document.querySelectorAll('.dc-images img'));
         let currentIndex = 0;
 
         function openLightbox(index) {

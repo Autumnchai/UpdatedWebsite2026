@@ -50,8 +50,8 @@
                 <img class="yw-full" src="img/yodelingwiki/musicnotes.jpg" alt="Music notes">
                 <img class="yw-full" src="img/yodelingwiki/yodellay.jpg" alt="Yodel-lay typography">
                 <div class="yw-three-col">
-                    <img src="img/yodelingwiki/yodelecholyrics.jpg" alt="Yodel echo lyrics">
                     <img src="img/yodelingwiki/yodelooooooh.jpg" alt="Yodel-ooooh typography">
+                    <img src="img/yodelingwiki/yodelecholyrics.jpg" alt="Yodel echo lyrics">
                     <img src="img/yodelingwiki/projection.jpg" alt="Projection">
                 </div>
                 <div class="yw-two-col yw-equal-row">
@@ -67,7 +67,7 @@
     <nav class="project-nav">
         <a href="islide.html" class="project-nav-link">← ISlide Collections</a>
         <a href="#top" class="project-nav-link project-nav-top">Back to Top</a>
-        <a href="wegmanspackaging.html" class="project-nav-link">Wegmans Packaging →</a>
+        <a href="wegmanspackaging.html" class="project-nav-link">Grocery Packaging →</a>
     </nav>
 
     <footer class="site-footer">
@@ -80,20 +80,70 @@
 
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <button class="lightbox-prev" id="lightbox-prev">&lt;</button>
         <img src="" alt="" id="lightbox-img">
+        <button class="lightbox-next" id="lightbox-next">&gt;</button>
     </div>
 
     <script>
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
 
-        document.querySelectorAll('.yw-main img').forEach(img => {
+        const topImgs = Array.from(document.querySelectorAll('.yw-top-grid img'));
+        const darkImgs = Array.from(document.querySelectorAll('.yw-dark-section img'));
+
+        let navSet = [];
+        let currentIndex = -1;
+
+        function openLightbox(img, set) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            navSet = set;
+            currentIndex = set.indexOf(img);
+            if (set.length > 1 && currentIndex >= 0) {
+                prevBtn.style.display = '';
+                nextBtn.style.display = '';
+                prevBtn.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+                nextBtn.style.visibility = currentIndex === set.length - 1 ? 'hidden' : 'visible';
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+            lightbox.classList.add('active');
+        }
+
+        topImgs.forEach(img => {
             img.style.cursor = 'pointer';
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.add('active');
-            });
+            img.addEventListener('click', () => openLightbox(img, topImgs));
+        });
+
+        darkImgs.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => openLightbox(img, darkImgs));
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex > 0) {
+                currentIndex--;
+                lightboxImg.src = navSet[currentIndex].src;
+                lightboxImg.alt = navSet[currentIndex].alt;
+                prevBtn.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+                nextBtn.style.visibility = 'visible';
+            }
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex < navSet.length - 1) {
+                currentIndex++;
+                lightboxImg.src = navSet[currentIndex].src;
+                lightboxImg.alt = navSet[currentIndex].alt;
+                nextBtn.style.visibility = currentIndex === navSet.length - 1 ? 'hidden' : 'visible';
+                prevBtn.style.visibility = 'visible';
+            }
         });
 
         lightbox.addEventListener('click', () => lightbox.classList.remove('active'));

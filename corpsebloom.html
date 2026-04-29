@@ -42,9 +42,11 @@
         </div>
 
         <div class="cb-dark-row">
-            <img src="img/corpsebloom/cdbookletandcase.jpg" alt="CD booklet and case">
-            <img src="img/corpsebloom/opencdbooklet.jpg" alt="Open CD booklet">
-            <img src="img/corpsebloom/cdbookletback.jpg" alt="CD booklet back">
+            <div class="cb-dark-row-inner">
+                <img src="img/corpsebloom/cdbookletandcase.jpg" alt="CD booklet and case">
+                <img src="img/corpsebloom/opencdbooklet.jpg" alt="Open CD booklet">
+                <img src="img/corpsebloom/cdbookletback.jpg" alt="CD booklet back">
+            </div>
         </div>
 
         <div class="cb-wrap cb-wrap-pt">
@@ -79,13 +81,13 @@
             <h2 class="cb-bts-heading">Behind the Scenes</h2>
             <a href="https://www.instagram.com/hydrozoansband/" class="cb-instagram-btn" target="_blank" rel="noopener noreferrer">Hydrozoans Instagram</a>
             <p class="cb-bts-credits"><strong>Tools:</strong> Adobe Photoshop, Adobe Illustrator, Adobe Indesign, Adobe Premiere Pro, Procreate</p>
-            <p class="cb-bts-credits"><strong>Materials:</strong> seed paper, vellum paper, rubber stamp block &amp; ink; hand-carved stencil, fabric spray paint</p>
+            <p class="cb-bts-credits"><strong>Materials:</strong> scanner, seed paper, vellum paper, rubber stamp block &amp; ink; hand-carved stencil, fabric spray paint</p>
         </div>
 
     </main>
 
     <nav class="project-nav">
-        <a href="coral.html" class="project-nav-link">← Coral</a>
+        <a href="designconnects.html" class="project-nav-link">← Design Connects</a>
         <a href="#top" class="project-nav-link project-nav-top">Back to Top</a>
         <a href="islide.html" class="project-nav-link">ISlide Collections →</a>
     </nav>
@@ -100,20 +102,61 @@
 
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <button class="lightbox-prev" id="lightbox-prev">&lt;</button>
         <img src="" alt="" id="lightbox-img">
+        <button class="lightbox-next" id="lightbox-next">&gt;</button>
     </div>
 
     <script>
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
+
+        const cdImgs = Array.from(document.querySelectorAll('.cb-dark-row img'));
+        let currentCdIndex = -1;
+
+        function openLightbox(img) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            currentCdIndex = cdImgs.indexOf(img);
+            if (currentCdIndex >= 0) {
+                prevBtn.style.display = '';
+                nextBtn.style.display = '';
+                prevBtn.style.visibility = currentCdIndex === 0 ? 'hidden' : 'visible';
+                nextBtn.style.visibility = currentCdIndex === cdImgs.length - 1 ? 'hidden' : 'visible';
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+            lightbox.classList.add('active');
+        }
 
         document.querySelectorAll('.cb-hero-cover img, .cb-fullbleed img, .cb-dark-row img').forEach(img => {
             img.style.cursor = 'pointer';
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.add('active');
-            });
+            img.addEventListener('click', () => openLightbox(img));
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentCdIndex > 0) {
+                currentCdIndex--;
+                lightboxImg.src = cdImgs[currentCdIndex].src;
+                lightboxImg.alt = cdImgs[currentCdIndex].alt;
+                prevBtn.style.visibility = currentCdIndex === 0 ? 'hidden' : 'visible';
+                nextBtn.style.visibility = 'visible';
+            }
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentCdIndex < cdImgs.length - 1) {
+                currentCdIndex++;
+                lightboxImg.src = cdImgs[currentCdIndex].src;
+                lightboxImg.alt = cdImgs[currentCdIndex].alt;
+                nextBtn.style.visibility = currentCdIndex === cdImgs.length - 1 ? 'hidden' : 'visible';
+                prevBtn.style.visibility = 'visible';
+            }
         });
 
         lightbox.addEventListener('click', () => lightbox.classList.remove('active'));

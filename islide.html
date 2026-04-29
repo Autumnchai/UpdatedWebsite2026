@@ -103,20 +103,78 @@
 
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <button class="lightbox-prev" id="lightbox-prev">&lt;</button>
         <img src="" alt="" id="lightbox-img">
+        <button class="lightbox-next" id="lightbox-next">&gt;</button>
     </div>
 
     <script>
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
 
-        document.querySelectorAll('.is-main img').forEach(img => {
+        const iconImgs = Array.from(document.querySelectorAll('.is-icons-grid img'));
+        const typeImgs = Array.from(document.querySelectorAll('.is-type'));
+        const logoImg = document.querySelector('.is-logo img');
+        const allImgs = Array.from(document.querySelectorAll('.is-main img'));
+        const otherImgs = allImgs.filter(img => !iconImgs.includes(img) && !typeImgs.includes(img) && img !== logoImg);
+
+        let navSet = [];
+        let currentIndex = -1;
+
+        function openLightbox(img, set) {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            navSet = set;
+            currentIndex = set.indexOf(img);
+            if (set.length > 1 && currentIndex >= 0) {
+                prevBtn.style.display = '';
+                nextBtn.style.display = '';
+                prevBtn.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+                nextBtn.style.visibility = currentIndex === set.length - 1 ? 'hidden' : 'visible';
+            } else {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+            lightbox.classList.add('active');
+        }
+
+        iconImgs.forEach(img => {
             img.style.cursor = 'pointer';
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.add('active');
-            });
+            img.addEventListener('click', () => openLightbox(img, iconImgs));
+        });
+
+        typeImgs.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => openLightbox(img, typeImgs));
+        });
+
+        otherImgs.forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => openLightbox(img, []));
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex > 0) {
+                currentIndex--;
+                lightboxImg.src = navSet[currentIndex].src;
+                lightboxImg.alt = navSet[currentIndex].alt;
+                prevBtn.style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+                nextBtn.style.visibility = 'visible';
+            }
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex < navSet.length - 1) {
+                currentIndex++;
+                lightboxImg.src = navSet[currentIndex].src;
+                lightboxImg.alt = navSet[currentIndex].alt;
+                nextBtn.style.visibility = currentIndex === navSet.length - 1 ? 'hidden' : 'visible';
+                prevBtn.style.visibility = 'visible';
+            }
         });
 
         lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
