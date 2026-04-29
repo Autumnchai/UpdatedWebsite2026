@@ -1247,6 +1247,15 @@ main {
     .gp-four-col .gp-stacked {
         grid-column: span 2;
     }
+
+    .gp-four-col > img {
+        aspect-ratio: 543 / 1490;
+        height: auto;
+    }
+
+    .gp-stacked img {
+        height: auto;
+    }
 }
 
 /* ======================== */
