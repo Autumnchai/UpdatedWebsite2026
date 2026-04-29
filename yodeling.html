@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yodeling Typography | Autumn Thelen</title>
+    <title>Yodeling Wiki | Autumn Thelen</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
     <header class="site-header">
         <a href="index.html" class="logo">
             <img src="img/AutumnThelenLogo_Horizontal_White_Nobg.png" alt="Autumn Thelen">
@@ -18,19 +18,57 @@
         </nav>
     </header>
 
-    <main class="project-page">
-        <h1 class="page-title">YODELING TYPOGRAPHY</h1>
+    <main class="yw-main">
 
-        <div class="project-hero">
-            <img src="img/yodelingthumbnail.jpg" alt="Yodeling Typography">
+        <div class="yw-wrap">
+            <h1 class="page-title yw-title">YODELING WIKI</h1>
         </div>
 
-        <div class="project-description">
-            <p>Project description coming soon.</p>
+        <div class="yw-wrap">
+            <div class="yw-top-grid">
+                <img class="yw-top-main" src="img/yodelingwiki/physicalwiki.jpg" alt="Yodeling Wiki publication">
+                <img src="img/yodelingwiki/longpagephysicalwiki.jpg" alt="Long page spread">
+                <img src="img/yodelingwiki/lyricsphysicalwiki.jpg" alt="Lyrics spread">
+            </div>
         </div>
 
-        <a href="index.html" class="back-link">&larr; Back to Design</a>
+        <div class="yw-wrap">
+            <div class="yw-description">
+                <p><strong>Task:</strong> Create a typography-only publication with all content from a Wikipedia article using only type and one color.</p>
+                <p>I used placement and angles of type to imitate projection and the contrast between chest and head voice in yodeling. I used a variety of page sizes (some inserted with paperclips) to convey the experience of reading a Wikipedia article and seeing a collection of material from different sources. I bound the publication with ribbon as a reference to Alpine culture.</p>
+                <p><strong>Tools:</strong> Adobe InDesign</p>
+                <p><strong>Materials:</strong> cream colored cardstock, blue ribbon, paperclips</p>
+            </div>
+        </div>
+
+        <div class="yw-dark-section">
+            <div class="yw-wrap yw-dark-wrap">
+                <div class="yw-two-col">
+                    <img src="img/yodelingwiki/olayceee.jpg" alt="O-lay-ceee typography">
+                    <img src="img/yodelingwiki/cowboyyodelers.jpg" alt="Cowboy yodelers">
+                </div>
+                <img class="yw-full" src="img/yodelingwiki/musicnotes.jpg" alt="Music notes">
+                <img class="yw-full" src="img/yodelingwiki/yodellay.jpg" alt="Yodel-lay typography">
+                <div class="yw-three-col">
+                    <img src="img/yodelingwiki/yodelecholyrics.jpg" alt="Yodel echo lyrics">
+                    <img src="img/yodelingwiki/yodelooooooh.jpg" alt="Yodel-ooooh typography">
+                    <img src="img/yodelingwiki/projection.jpg" alt="Projection">
+                </div>
+                <div class="yw-two-col yw-equal-row">
+                    <img src="img/yodelingwiki/chestandhead.jpg" alt="Chest and head voice">
+                    <img src="img/yodelingwiki/songlyrics.jpg" alt="Song lyrics">
+                </div>
+                <img class="yw-full" src="img/yodelingwiki/alpineyodeling.jpg" alt="Alpine yodeling">
+            </div>
+        </div>
+
     </main>
+
+    <nav class="project-nav">
+        <a href="islide.html" class="project-nav-link">← ISlide Collections</a>
+        <a href="#top" class="project-nav-link project-nav-top">Back to Top</a>
+        <a href="wegmanspackaging.html" class="project-nav-link">Wegmans Packaging →</a>
+    </nav>
 
     <footer class="site-footer">
         <nav class="footer-nav">
@@ -39,5 +77,31 @@
             <a href="contact.html">Contact</a>
         </nav>
     </footer>
+
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.yw-main img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+
+        document.getElementById('lightbox-close').addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightbox.classList.remove('active');
+        });
+    </script>
 </body>
 </html>

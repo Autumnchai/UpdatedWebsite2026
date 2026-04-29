@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISlide Collections | Autumn Thelen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="img/AutumnThelenLogo_Horizontal_White_Nobg.png" alt="Autumn Thelen">
+        </a>
+        <nav class="main-nav">
+            <a href="index.html">Design</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="is-main">
+
+        <div class="is-wrap">
+            <div class="is-logo">
+                <img src="img/aprilislide/islidelogo.jpg" alt="ISlide">
+            </div>
+            <h1 class="is-title">STAR SIGNS COLLECTIONS</h1>
+        </div>
+
+        <div class="is-wrap">
+            <div class="is-realslides">
+                <img src="img/aprilislide/realslides.jpg" alt="Real ISlide products">
+            </div>
+        </div>
+
+        <div class="is-wrap">
+            <div class="is-hero">
+                <div class="is-hero-text">
+                    <p><strong>Task:</strong> During my internship at ISlide USA I created collections of in-house designs available for customers to purchase.</p>
+                    <p>For the first star sign collection, I created original illustrations that capture the elegance of each well-known star sign symbol in an original style that would appeal to a young adult demographic.</p>
+                    <p>For the second star sign collection, I created hand-rendered typography designs with words of the signs made of their respective elements.</p>
+                    <p>I also created marketing assets for the Instagram, and web banners for promotion on IslideUSA.com</p>
+                    <p><strong>Tools:</strong> Adobe Illustrator, Adobe Photoshop, Adobe Indesign, Procreate</p>
+                </div>
+                <div class="is-hero-img">
+                    <img src="img/aprilislide/ariesmockup.jpg" alt="ISlide Aries mockup">
+                </div>
+            </div>
+        </div>
+
+        <div class="is-dark-icons">
+            <div class="is-wrap">
+                <div class="is-icons-grid">
+                    <img src="img/aprilislide/ariesicon.png" alt="Aries">
+                    <img src="img/aprilislide/taurusicon.png" alt="Taurus">
+                    <img src="img/aprilislide/geminiicon.png" alt="Gemini">
+                    <img src="img/aprilislide/cancericon.png" alt="Cancer">
+                    <img src="img/aprilislide/leoicon.png" alt="Leo">
+                    <img src="img/aprilislide/virgoicon.png" alt="Virgo">
+                    <img src="img/aprilislide/libraicon.png" alt="Libra">
+                    <img src="img/aprilislide/scorpioicon.png" alt="Scorpio">
+                    <img src="img/aprilislide/sagittariusicon.png" alt="Sagittarius">
+                    <img src="img/aprilislide/capricornicon.png" alt="Capricorn">
+                    <img src="img/aprilislide/aquariusicon.png" alt="Aquarius">
+                    <img src="img/aprilislide/piscesicon.png" alt="Pisces">
+                </div>
+            </div>
+        </div>
+
+        <div class="is-wrap">
+            <div class="is-lower">
+                <div class="is-social">
+                    <img src="img/aprilislide/zodiacsocialpost.jpg" alt="Zodiac social post">
+                </div>
+                <img class="is-type" src="img/aprilislide/cancertype.jpg" alt="Cancer lettering">
+                <img class="is-type" src="img/aprilislide/taurustype.jpg" alt="Taurus lettering">
+                <img class="is-type" src="img/aprilislide/libratype.jpg" alt="Libra lettering">
+                <img class="is-type" src="img/aprilislide/leotype.jpg" alt="Leo lettering">
+            </div>
+        </div>
+
+        <div class="is-wrap">
+            <div class="is-bottom">
+                <img src="img/aprilislide/zodiacwebbanner.jpg" alt="Zodiac collection web banner">
+            </div>
+        </div>
+
+    </main>
+
+    <nav class="project-nav">
+        <a href="corpsebloom.html" class="project-nav-link">← Corpse Bloom</a>
+        <a href="#top" class="project-nav-link project-nav-top">Back to Top</a>
+        <a href="yodeling.html" class="project-nav-link">Yodeling Wiki →</a>
+    </nav>
+
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <a href="index.html">Design</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.is-main img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+
+        document.getElementById('lightbox-close').addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightbox.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

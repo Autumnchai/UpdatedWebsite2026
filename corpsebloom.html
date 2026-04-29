@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corpse Bloom | Autumn Thelen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="img/AutumnThelenLogo_Horizontal_White_Nobg.png" alt="Autumn Thelen">
+        </a>
+        <nav class="main-nav">
+            <a href="index.html">Design</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="cb-main">
+
+        <div class="cb-wrap">
+            <h1 class="page-title cb-page-title">CORPSE BLOOM<br>ALBUM &amp; ASSETS</h1>
+
+            <div class="cb-hero">
+                <div class="cb-hero-logo">
+                    <img src="img/corpsebloom/hydrozoanslogo.jpg" alt="Hydrozoans logo">
+                </div>
+                <div class="cb-hero-cover">
+                    <img src="img/corpsebloom/corpsebloomalbumcover.jpg" alt="Corpse Bloom album cover">
+                </div>
+            </div>
+
+            <div class="cb-description">
+                <p><strong>CORPSE BLOOM</strong> is a multi-sensory expression of my experiences with beauty, change, and grief. Original gritty sounds and textures, paired with recyclable, delicate materials, capture the reality of decomposition over time. Seed paper in every CD booklet reminds us that wherever there are endings, there are also new beginnings.</p>
+                <p><strong>This project is a reminder &amp; challenge to myself and others to cherish the temporary, reconsider arbitrary expectations, and embrace transformation.</strong></p>
+            </div>
+            <div class="cb-fullbleed">
+                <img src="img/corpsebloom/hydrozoansinstallation.jpg" alt="Hydrozoans installation">
+            </div>
+        </div>
+
+        <div class="cb-dark-row">
+            <img src="img/corpsebloom/cdbookletandcase.jpg" alt="CD booklet and case">
+            <img src="img/corpsebloom/opencdbooklet.jpg" alt="Open CD booklet">
+            <img src="img/corpsebloom/cdbookletback.jpg" alt="CD booklet back">
+        </div>
+
+        <div class="cb-wrap cb-wrap-pt">
+            <h2 class="cb-listen-heading"><a href="https://hydrozoans.bandcamp.com" class="cb-listen-link" target="_blank" rel="noopener noreferrer">Listen Here</a></h2>
+
+            <div class="cb-tracks-grid">
+                <div class="cb-track">
+                    <div class="cb-track-embed">
+                        <iframe src="https://bandcamp.com/EmbeddedPlayer/album=215014685/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/track=3298860137/transparent=true/" seamless></iframe>
+                    </div>
+                </div>
+                <div class="cb-track">
+                    <div class="cb-track-embed">
+                        <iframe src="https://bandcamp.com/EmbeddedPlayer/album=215014685/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/track=4133749881/transparent=true/" seamless></iframe>
+                    </div>
+                </div>
+                <div class="cb-track">
+                    <div class="cb-track-embed">
+                        <iframe src="https://bandcamp.com/EmbeddedPlayer/album=215014685/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/track=460983375/transparent=true/" seamless></iframe>
+                    </div>
+                </div>
+                <div class="cb-track">
+                    <div class="cb-track-embed">
+                        <iframe src="https://bandcamp.com/EmbeddedPlayer/album=215014685/size=large/bgcol=ffffff/linkcol=0687f5/minimal=true/track=2743805220/transparent=true/" seamless></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cb-bts">
+            <h2 class="cb-bts-heading">Behind the Scenes</h2>
+            <a href="https://www.instagram.com/hydrozoansband/" class="cb-instagram-btn" target="_blank" rel="noopener noreferrer">Hydrozoans Instagram</a>
+            <p class="cb-bts-credits"><strong>Tools:</strong> Adobe Photoshop, Adobe Illustrator, Adobe Indesign, Adobe Premiere Pro, Procreate</p>
+            <p class="cb-bts-credits"><strong>Materials:</strong> seed paper, vellum paper, rubber stamp block &amp; ink; hand-carved stencil, fabric spray paint</p>
+        </div>
+
+    </main>
+
+    <nav class="project-nav">
+        <a href="coral.html" class="project-nav-link">← Coral</a>
+        <a href="#top" class="project-nav-link project-nav-top">Back to Top</a>
+        <a href="islide.html" class="project-nav-link">ISlide Collections →</a>
+    </nav>
+
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <a href="index.html">Design</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.cb-hero-cover img, .cb-fullbleed img, .cb-dark-row img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+
+        document.getElementById('lightbox-close').addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightbox.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
