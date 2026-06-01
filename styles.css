@@ -526,7 +526,7 @@ main {
 
 .yw-title {
     color: #000;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 30px;
 }
 
@@ -659,7 +659,7 @@ main {
 /* Logo */
 .is-logo {
     text-align: center;
-    padding-top: 50px;
+    padding-top: 30px;
     margin-bottom: 4px;
 }
 
@@ -676,7 +676,7 @@ main {
     font-weight: 900;
     color: #000;
     letter-spacing: 0.5px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 /* Real slides (below title) */
@@ -1419,5 +1419,135 @@ main {
 
     .cb-bts-credits {
         white-space: normal;
+    }
+}
+
+/* ======================== */
+/* Cub Kicks Page           */
+/* ======================== */
+
+.ck-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.ck-wrap {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 80px;
+}
+
+.ck-title {
+    color: #000;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.ck-hero {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 24px;
+}
+
+.ck-hero > img {
+    width: 100%;
+    display: block;
+}
+
+.ck-description p {
+    font-family: 'Google Sans', 'Noto Sans', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.ck-description p:last-child {
+    margin-bottom: 0;
+}
+
+.ck-full-img {
+    width: 100%;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.ck-first-img {
+    margin-bottom: 30px;
+}
+
+.ck-bottom-wrap {
+    padding-top: 46px;
+    padding-bottom: 40px;
+}
+
+.ck-bottom-wrap .ck-full-img {
+    margin-bottom: 0;
+}
+
+.ck-stickers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 50px;
+}
+
+.ck-stickers img {
+    width: 100%;
+    display: block;
+}
+
+.ck-dark-section {
+    background-color: #000;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.ck-dark-inner {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ck-dark-inner img {
+    width: 100%;
+    display: block;
+}
+
+/* Cub Kicks — mobile */
+@media (max-width: 600px) {
+    .ck-wrap {
+        padding: 0 20px;
+    }
+
+    .ck-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .ck-stickers {
+        grid-template-columns: 1fr;
+    }
+
+    .ck-dark-inner {
+        padding: 0 20px;
+    }
+
+    .ck-bottom-wrap {
+        padding-top: 60px;
     }
 }

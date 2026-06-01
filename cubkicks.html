@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cub Kicks | Autumn Thelen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="img/AutumnThelenLogo_Horizontal_White_Nobg.png" alt="Autumn Thelen">
+        </a>
+        <nav class="main-nav">
+            <a href="index.html">Design</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main class="ck-main">
+        <div class="ck-wrap">
+            <h1 class="page-title ck-title">CUB KICKS</h1>
+
+            <img class="ck-full-img ck-first-img" src="img/cubkicks/boxmockup.jpg" alt="Cub Kicks shoe box mockup">
+
+            <div class="ck-hero">
+                <img src="img/cubkicks/tagdiscount.jpg" alt="Cub Kicks discount tags">
+                <div class="ck-description">
+                    <p><strong>Task:</strong> Create a hypothetical shoe brand inspired by the movie&nbsp;Paddington.</p>
+                    <p><strong>Concept:</strong> This brand is designed for children and includes activities at the bottom of the box (stickers), as well as a mini activity booklet. There are also elements for parents to see and use, like a discount tag and information about the shoes in the booklet.</p>
+                    <p>The box is visually based on Paddington's briefcase and illustrations reference the movie. Colorful blob elements are inspired by the playful messes Paddington often makes.</p>
+                    <p><strong>Tools:</strong> Procreate, Adobe Illustrator, Photoshop, InDesign</p>
+                </div>
+            </div>
+
+            <img class="ck-full-img" src="img/cubkicks/boxdieline.jpg" alt="Cub Kicks box dieline">
+            <img class="ck-full-img" src="img/cubkicks/tissuepaper.jpg" alt="Cub Kicks tissue paper">
+
+            <div class="ck-stickers">
+                <img src="img/cubkicks/stickersbefore.jpg" alt="Sticker activity before">
+                <img src="img/cubkicks/stickersafter.jpg" alt="Sticker activity after">
+            </div>
+        </div>
+
+        <div class="ck-dark-section">
+            <div class="ck-dark-inner">
+                <img src="img/cubkicks/bookletmockup.jpg" alt="Cub Kicks activity booklet">
+                <img src="img/cubkicks/bookletpages.png" alt="Cub Kicks booklet pages spread">
+            </div>
+        </div>
+
+        <div class="ck-wrap ck-bottom-wrap">
+            <img class="ck-full-img" src="img/cubkicks/alltogether.jpg" alt="Cub Kicks all components">
+        </div>
+    </main>
+
+    <nav class="project-nav">
+        <a href="yodeling.html" class="project-nav-link">← Yodeling Wiki</a>
+        <a href="#top" class="project-nav-link project-nav-top">Back to Top</a>
+        <a href="corpsebloom.html" class="project-nav-link">Corpse Bloom →</a>
+    </nav>
+
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <a href="index.html">Design</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </footer>
+
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <button class="lightbox-prev" id="lightbox-prev">&lt;</button>
+        <img src="" alt="" id="lightbox-img">
+        <button class="lightbox-next" id="lightbox-next">&gt;</button>
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
+
+        const allImgs = Array.from(document.querySelectorAll('.ck-main img'));
+        let currentIndex = -1;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            lightboxImg.src = allImgs[index].src;
+            lightboxImg.alt = allImgs[index].alt;
+            prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+            nextBtn.style.visibility = index === allImgs.length - 1 ? 'hidden' : 'visible';
+            lightbox.classList.add('active');
+        }
+
+        allImgs.forEach((img, i) => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', () => openLightbox(i));
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex > 0) openLightbox(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentIndex < allImgs.length - 1) openLightbox(currentIndex + 1);
+        });
+
+        lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+
+        document.getElementById('lightbox-close').addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightbox.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
